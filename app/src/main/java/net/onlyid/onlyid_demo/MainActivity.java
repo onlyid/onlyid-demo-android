@@ -19,7 +19,7 @@ import okhttp3.RequestBody;
 public class MainActivity extends Activity implements OnlyID.AuthListener {
     static final String CLIENT_ID = "5adac916904be93f3f621003", CLIENT_SECRET = "f71c0c12997a00cf95fe82e130a45711";
     // 你的服务端地址
-    static final String MY_URL = "http://demo.onlyid.net:3002/";
+    static final String MY_URL = "https://demo.onlyid.net/";
     private static final String TAG = "OnlyID_Demo";
     TextView textView, textView2, textView3;
     boolean clientTokenFlow = true;
