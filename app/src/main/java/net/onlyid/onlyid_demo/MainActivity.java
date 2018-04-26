@@ -73,12 +73,12 @@ public class MainActivity extends Activity implements OnlyID.AuthListener {
             MyHttp.request(request, new MyHttp.MyCallback() {
                 @Override
                 public void onFailure(Call call, IOException e, Integer code) {
-                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    textView3.setText("请求错误：" + e.toString());
                 }
 
                 @Override
                 public void onSuccess(Call call, String s) {
-                    textView3.setText(s);
+                    textView3.setText("服务端返回：" + s);
                 }
             });
         }
@@ -89,12 +89,12 @@ public class MainActivity extends Activity implements OnlyID.AuthListener {
             MyHttp.request(request, new MyHttp.MyCallback() {
                 @Override
                 public void onFailure(Call call, IOException e, Integer code) {
-                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    textView3.setText("请求错误：" + e.toString());
                 }
 
                 @Override
                 public void onSuccess(Call call, String s) {
-                    textView3.setText(s);
+                    textView3.setText("服务端返回：" + s);
                 }
             });
         }
