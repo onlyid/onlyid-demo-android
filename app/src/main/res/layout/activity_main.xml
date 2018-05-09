@@ -13,7 +13,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="根据你的应用场景，使用合适文案提示用户。\n如登录时：手机号登录；三方登录绑定手机号时：绑定手机号；更换手机号时：验证新手机号。\n此处以登录为例。"
+        android:text="根据你的应用场景，使用合适文案提示用户。\n如登录时：手机号登录；三方登录绑定手机号时：绑定手机号；更换手机号时：验证新手机号。\n\n此处以登录为例。"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
