@@ -3,6 +3,7 @@ package net.onlyid.onlyid_demo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class MainActivity extends Activity {
+    static final String TAG = "onlyid_demo";
     TextView tip, tip1;
 
     @Override

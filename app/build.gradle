@@ -28,6 +28,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    implementation 'net.onlyid:onlyid-sdk:+'
+    implementation 'net.onlyid:onlyid-sdk:1.4.8'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 }
