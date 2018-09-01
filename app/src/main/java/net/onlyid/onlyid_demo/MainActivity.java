@@ -3,11 +3,10 @@ package net.onlyid.onlyid_demo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import net.onlyid.onlyid_sdk.AuthActivity;
+import net.onlyid.onlyid_sdk.OnlyID;
 
 import java.io.IOException;
 
@@ -20,7 +19,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnlyID.AuthListener {
     static final String TAG = "onlyid_demo";
     TextView tip, tip1;
 
@@ -33,21 +32,16 @@ public class MainActivity extends Activity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, AuthActivity.class);
+        Intent intent = new Intent();
         intent.putExtra("clientId", "5adac916904be93f3f621003");
-        startActivityForResult(intent, 1);
+        OnlyID.auth(this, intent, this);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode != 1) return;
+    public void onAuthResp(OnlyID.ErrCode errCode, String code, String state) {
+        if (errCode == OnlyID.ErrCode.CANCEL) { tip.setText("用户取消"); return; }
 
-        if (resultCode == RESULT_CANCELED) { tip.setText("用户取消"); return; }
-
-        if (resultCode == AuthActivity.RESULT_NETWORK_ERR) { tip.setText("网络错误"); return; }
-
-        String code = data.getStringExtra("code");
+        if (errCode == OnlyID.ErrCode.NETWORK_ERR) { tip.setText("网络错误"); return; }
 
         // 生产环境使用时，获取用户信息建议在服务端进行，以防泄露你的client secret
         RequestBody requestBody = new FormBody.Builder().add("code", code)
