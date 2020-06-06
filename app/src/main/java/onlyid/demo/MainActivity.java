@@ -74,10 +74,9 @@ public class MainActivity extends Activity {
             if (!response.isSuccessful()) throw new Exception(respBody);
 
             response.close();
-            String accessToken = new JSONObject(respBody).getString("accessToken");
             Request request1 = new Request.Builder()
                     .url("https://www.onlyid.net/api/open/user-info")
-                    .header("Authorization", accessToken)
+                    .header("Authorization", new JSONObject(respBody).getString("accessToken"))
                     .build();
             response = httpClient.newCall(request1).execute();
             String respBody1 = response.body().string();
