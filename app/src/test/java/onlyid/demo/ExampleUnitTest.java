@@ -1,4 +1,4 @@
-package net.onlyid.onlyid_demo;
+package onlyid.demo;
 
 import org.junit.Test;
 

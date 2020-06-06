@@ -7,25 +7,20 @@
     android:padding="20dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="根据业务场景，使用不同文案提示用户。\n\n如登录时：手机号登录；三方登录绑定手机时：绑定手机号；更换手机号时：验证新手机号。如果和应用已有登录方式协同使用，可提示：唯ID登录。"/>
-
-    <TextView
-        android:id="@+id/tip1"
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#7f7f7f"
-        android:text="以登录为例："/>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="login"
-        android:text="手机号登录"/>
+        android:text="@string/login"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
 </LinearLayout>

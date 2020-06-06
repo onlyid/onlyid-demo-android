@@ -1,1 +1,2 @@
+rootProject.name = "OnlyID Demo"
 include ':app'
