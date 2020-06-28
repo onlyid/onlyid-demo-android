@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="onlyid.demo">
+    package="net.onlyid.demo">
 
     <application
         android:allowBackup="true"

@@ -1,4 +1,4 @@
-package onlyid.demo;
+package net.onlyid.demo;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,12 +13,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import onlyid.sdk.OnlyID;
+
+import net.onlyid.sdk.OnlyID;
 
 public class MainActivity extends Activity {
     static final String TAG = "OnlyID";
-    static final String CLIENT_ID = "你的应用id";
-    static final String CLIENT_SECRET = "你的应用secret";
+    static final String CLIENT_ID = "73c6cce568d34a25ac426a26a1ca0c1e";
+    static final String CLIENT_SECRET = "36c820ba83bb4944a0744208066e8bbf";
 
     TextView result;
 

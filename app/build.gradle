@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "onlyid.demo"
-        minSdkVersion 19
+        applicationId "net.onlyid.demo"
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -23,7 +23,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.github.onlyid:onlyid-sdk-android:1.0.1'
+    implementation 'com.github.onlyid:onlyid-sdk-android:1.0.3'
     implementation 'com.squareup.okhttp3:okhttp:3.14.9'
 
     testImplementation 'junit:junit:4.12'
