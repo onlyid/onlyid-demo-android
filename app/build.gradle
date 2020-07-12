@@ -23,7 +23,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.github.onlyid:onlyid-sdk-android:1.0.3'
+    implementation 'com.github.onlyid:onlyid-sdk-android:1.0.4'
     implementation 'com.squareup.okhttp3:okhttp:3.14.9'
 
     testImplementation 'junit:junit:4.12'
