@@ -1,6 +1,7 @@
 package net.onlyid.demo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,12 +15,14 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import net.onlyid.sdk.OAuthConfig;
 import net.onlyid.sdk.OnlyID;
 
 public class MainActivity extends Activity {
     static final String TAG = "OnlyID";
     static final String CLIENT_ID = "73c6cce568d34a25ac426a26a1ca0c1e";
     static final String CLIENT_SECRET = "36c820ba83bb4944a0744208066e8bbf";
+    static final int REQUEST_OAUTH = 1;
 
     TextView result;
 
@@ -32,27 +35,29 @@ public class MainActivity extends Activity {
     }
 
     public void login(View view) {
-        OnlyID.OAuthConfig config = new OnlyID.OAuthConfig(CLIENT_ID);
-        OnlyID.oauth(this, config, new OnlyID.OAuthListener() {
-            @Override
-            public void onComplete(String code, String state) {
-                Log.d(TAG, "onComplete: code= " + code + ", state= " + state);
+        OAuthConfig config = new OAuthConfig(CLIENT_ID);
+        OnlyID.oauth(this, config, REQUEST_OAUTH);
+    }
 
-                new Thread(() -> {
-                    getUserInfo(code);
-                }).start();
-            }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-            @Override
-            public void onError(OnlyID.ErrCode errCode) {
-                result.setText("登录失败，错误信息：\n" + errCode + "（" + errCode.msg + "）");
-            }
+        if (requestCode != REQUEST_OAUTH) return;
 
-            @Override
-            public void onCancel() {
-                result.setText("用户取消");
-            }
-        });
+        if (resultCode == RESULT_OK) {
+            String code = data.getStringExtra(OnlyID.EXTRA_CODE);
+            Log.d(TAG, "onActivityResult: code= " + code);
+
+            new Thread(() -> {
+                getUserInfo(code);
+            }).start();
+        } else if (resultCode == RESULT_CANCELED) {
+            result.setText("用户取消（拒绝）");
+        } else if (resultCode == OnlyID.RESULT_ERROR) {
+            Exception exception = (Exception) data.getSerializableExtra(OnlyID.EXTRA_EXCEPTION);
+            result.setText("登录失败，错误信息：\n" + exception);
+        }
     }
 
     /**
