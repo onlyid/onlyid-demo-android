@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * 生产环境使用时，获取用户信息建议在服务端进行，以防泄露你的client secret
+     * 生产环境使用时，获取用户信息建议在服务端进行，以防泄露你的Client Secret
      */
     void getUserInfo(String code) {
         Response response = null;
