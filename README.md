@@ -1,5 +1,3 @@
-## 运行说明
+## Deprecated
 
-* 克隆项目到本地（`git clone https://github.com/onlyid/onlyid-demo-android.git`）
-* 使用Android Studio（4.0或以上）打开
-* 连接手机，点击运行️
+示例Demo已经迁移到[SDK仓库](https://github.com/onlyid/onlyid-sdk-android)，本仓库不再维护。

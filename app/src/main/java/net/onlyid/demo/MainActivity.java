@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
             object.put("clientSecret", CLIENT_SECRET);
             object.put("authorizationCode", code);
             Request request = new Request.Builder()
-                    .url("https://www.onlyid.net/api/oauth/access-token")
+                    .url("https://www.onlyid.net/api/open/access-token")
                     .post(RequestBody.create(MediaType.get("application/json; charset=utf-8"), object.toString()))
                     .build();
             response = httpClient.newCall(request).execute();
@@ -80,9 +80,9 @@ public class MainActivity extends Activity {
             if (!response.isSuccessful()) throw new Exception(respBody);
 
             response.close();
+            String token = new JSONObject(respBody).getString("token");
             Request request1 = new Request.Builder()
-                    .url("https://www.onlyid.net/api/open/user-info")
-                    .header("Authorization", new JSONObject(respBody).getString("accessToken"))
+                    .url("https://www.onlyid.net/api/open/user-info?accessToken=" + token)
                     .build();
             response = httpClient.newCall(request1).execute();
             String respBody1 = response.body().string();
